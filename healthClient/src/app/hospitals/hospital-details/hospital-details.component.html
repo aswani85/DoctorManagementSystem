@@ -1,0 +1,66 @@
+<h2>{{hospital.name}} Hospital details</h2>
+<div class="container">
+
+  <div>
+    <form (ngSubmit)="onSubmit()">
+
+      <div  class="form-group">
+        <label for="name">Name</label>
+        <input type="text" class="form-control" id="name" required [(ngModel)]="hospital.name" name="name">
+      </div>
+
+      <div  class="form-group">
+        <label for="country">Country</label>
+        <input type="text" class="form-control" id="country" required [(ngModel)]="hospital.country" name="country" >
+      </div>
+
+      <div class="form-group">
+        <label for="town">Town</label>
+        <input type="text" class="form-control" id="town" [(ngModel)]="hospital.town" name="town">
+      </div>
+
+      <div class="form-group">
+        <label for="street">Street</label>
+        <input type="text" class="form-control" id="street" required [(ngModel)]="hospital.street" name="street">
+      </div>
+
+      <div  class="form-group">
+        <label for="postalCode">Postal Code</label>
+        <input type="text" onkeypress='return event.charCode >=48 && event.charCode <= 57 || event.charCode == 45' class="form-control"
+          id="postalCode" required [(ngModel)]="hospital.postalCode" name="postalCode" >
+      </div>
+
+      <div class="form-group" >
+        <label for="phoneNumber">Phone Number</label>
+        <input type="text" onkeypress='return event.charCode >=48 && event.charCode <= 57 || event.charCode == 45' class="form-control"
+          id="phoneNumber" required [(ngModel)]="hospital.phoneNumber" name="phoneNumber" >
+
+      </div>
+      <div  class="form-group">
+        <label for="faxNumber">Fax Number</label>
+        <input type="text" class="form-control" id="faxNumber" required [(ngModel)]="hospital.faxNumber" name="faxNumber">
+      </div>
+
+      <div class="form-group">
+        <label for="numberOfAmbulances">Number of Ambulances</label>
+        <input type="number" class="form-control" id="numberOfAmbulances" required [(ngModel)]="hospital.numberOfAmbulances"
+          name="numberOfAmbulances">
+      </div>
+
+      <div class="form-group">
+        <label for="helicopterAccess">Helicopter Access</label>
+        <input type="checkbox" id="helicopterAccess" required [(ngModel)]="hospital.helicopterAccess" name="helicopterAccess">
+      </div>
+
+      <div>
+        <label for="teachingHospital">Teaching Hospital</label>
+        <input type="checkbox" id="teachingHospital" required [(ngModel)]="hospital.teachingHospital" name="teachingHospital">
+      </div>
+
+      <div class="btn-group">
+        <button class="btn btn-primary" (click)="goBack()">Back</button>
+        <button type="submit" class="btn btn-success">Update</button>
+      </div>
+    </form>
+  </div>
+</div>

@@ -1,0 +1,33 @@
+
+  <div class="table-responsive">
+      <button class="btn btn-primary" [routerLink]="['add']">Add hospital</button>
+
+    <table class="table table-hover">
+      <thead>
+
+        <tr>
+          <th *ngFor="let header of headers">{{header}}</th>
+        </tr>
+
+      </thead>
+      <tbody>
+        <tr *ngFor="let hospital of hospitals" >
+          <td>{{hospital.id}}</td>
+          <td>{{hospital.name}}</td>
+          <td>{{hospital.country}}</td>
+          <td>{{hospital.town}}</td>
+          <td>{{hospital.street}}</td>
+          <td>{{hospital.postalCode}}</td>
+          <td>{{hospital.phoneNumber}}</td>
+          <td>{{hospital.faxNumber}}</td>
+          <td>{{hospital.numberOfAmbulances}}</td>
+          <td>{{hospital.helicopterAccess | questionableBoolean}}</td>
+          <td>{{hospital.teachingHospital | questionableBoolean}}</td>
+          <td><button  [routerLink]="['/hospitals', hospital.id, 'doctors']"  class="btn btn-info" btn-xs>Doctors</button></td>
+          <td><button (click)="delete(hospital.id)" class="btn btn-danger" btn-xs>X</button></td>
+          <td><button  [routerLink]="['/hospitals/details', hospital.id]" class="btn btn-info" btn-xs>Edit</button></td>
+
+        </tr>
+      </tbody>
+    </table>
+  </div>

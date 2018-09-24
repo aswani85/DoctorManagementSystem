@@ -1,0 +1,32 @@
+<div class="table-responsive">
+  <button class="btn btn-primary" [routerLink]="['add']">Add doctor</button>
+  <table class="table table-hover">
+    <thead>
+      <tr>
+        <th *ngFor="let header of headers">{{header}}</th>
+      </tr>
+
+    </thead>
+    <tbody>
+        <tr *ngFor="let doctor of doctors">
+        <td>{{doctor.id}}</td>
+        <td>{{doctor.name}}</td>
+        <td>{{doctor.surname}}</td>
+        <td>{{doctor.title}}</td>
+        <td>{{doctor.licenseNumber}}</td>
+        <td>{{doctor.phone}}</td>
+        <td>{{doctor.email}}</td>
+        <td>{{doctor.nationality}}</td>
+        <td>{{doctor.speciality}}</td>
+        <td>{{doctor.dateOfBirth}}</td>
+        <td>{{doctor.ateacher | questionableBoolean}}</td>
+        <td>
+          <button (click)="delete(doctor.id)" class="btn btn-danger" btn-xs>X</button>
+        </td>
+        <td>
+          <button [routerLink]="['/doctors/detail', doctor.id]" class="btn btn-info" btn-xs>Edit</button>
+        </td>
+      </tr>
+    </tbody>
+  </table>
+</div>

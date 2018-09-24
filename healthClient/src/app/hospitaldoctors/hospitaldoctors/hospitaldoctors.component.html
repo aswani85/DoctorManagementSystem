@@ -1,0 +1,27 @@
+<div class="table-responsive">
+  <button class="btn btn-primary" [routerLink]="['add']">Hire doctor</button>
+  <h2>Doctors in {{hospital.name}}</h2>
+
+  <table class="table table-hover">
+    <thead>
+      <tr>
+        <th *ngFor="let header of headers">{{header}}</th>
+      </tr>
+<tr *ngIf="showNull"> There is no doctors in this hospital... </tr>
+    </thead>
+    <tbody>
+      <tr *ngFor="let hospitaldoctor of hospitaldoctors">
+        <td>{{hospitaldoctor.doctor.name}} {{hospitaldoctor.doctor.surname}}</td>
+        <td>{{hospitaldoctor.doctor.licenseNumber}}</td>
+        <td>{{hospitaldoctor.contractStartDate}}</td>
+        <td>{{hospitaldoctor.contractEndDate}}</td>
+        <td>{{hospitaldoctor.position}}</td>
+        <td>{{hospitaldoctor.supervisor}}</td>
+        <td>{{hospitaldoctor.partTime | questionableBoolean}}</td>
+        <td>
+          <button class="btn btn-danger" (click)="delete(hospitaldoctor.hospitalId, hospitaldoctor.doctorId)" btn-xs>X</button>
+        </td>
+      </tr>
+    </tbody>
+  </table>
+</div>

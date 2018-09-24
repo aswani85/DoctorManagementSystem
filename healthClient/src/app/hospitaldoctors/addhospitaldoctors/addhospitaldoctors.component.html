@@ -1,0 +1,69 @@
+
+
+<div class="container">
+<div class="table-responsive" [hidden]="formVisible">
+    <h2>Hire doctor in {{hospitalH.name}}</h2>
+<h2>Select Doctor</h2>
+    <table class="table table-hover">
+      <thead>
+        <tr>
+          <th *ngFor="let header of headers">{{header}}</th>
+        </tr>
+
+      </thead>
+      <tbody>
+          <tr *ngFor="let doctorD of doctors"  >
+          <td>{{doctorD.id}}</td>
+          <td>{{doctorD.name}}</td>
+          <td>{{doctorD.surname}}</td>
+          <td>{{doctorD.title}}</td>
+          <td>{{doctorD.licenseNumber}}</td>
+          <td>{{doctorD.phone}}</td>
+          <td>{{doctorD.speciality}}</td>
+          <td>{{doctorD.ateacher | questionableBoolean}}</td>
+          <td>
+            <button (click)="selectDoctor(doctorD)" class="btn btn-info" btn-xs>Hire doctor</button>
+          </td>
+        </tr>
+      </tbody>
+    </table>
+  </div>
+</div>
+
+<form (ngSubmit)="onSubmit(hospitalH.id, doctorD.id, hdForm.value)" *ngIf="formVisible" >
+<h2>Hire {{doctorD.name}} {{doctorD.surname}} in {{hospitalH.name}}</h2>
+
+  <div class="form-group" [formGroup]="hdForm">
+    <label for="contractStartDate">Contract Start Date</label>
+    <input type="date" class="form-control" id="contractStartDate" [(ngModel)]="hospitaldoctor.contractStartDate" name="contractStartDate" formControlName="contractStartDate">
+    <small *ngIf="!hdForm.controls['contractStartDate'].valid && hdForm.controls['contractStartDate'].touched">This field is Required</small>
+    <div class="form-group">
+    <label for="contractEndDate" style="margin-top: 5px">Contract End Date</label>
+    <input type="date" class="form-control" id="contractEndDate" required [(ngModel)]="hospitaldoctor.contractEndDate" name="contractEndDate" formControlName="contractEndDate" >
+    <small *ngIf="!hdForm.controls['contractEndDate'].valid && hdForm.controls['contractEndDate'].touched">This field is Required</small>
+  </div>
+  <small [hidden]="!hdForm.hasError('endDateLessThanStartDate')">Start date has to be before end date</small>
+
+  </div>
+
+  <div class="form-group">
+    <label for="position">Position</label>
+    <input type="text" class="form-control" id="position" required [(ngModel)]="hospitaldoctor.position" name="position">
+  </div>
+
+  <div class="form-group">
+      <label for="supervisor">Supervisor</label>
+      <input type="text" class="form-control" id="supervisor" required [(ngModel)]="hospitaldoctor.supervisor" name="supervisor">
+    </div>
+
+
+  <div class="form-group">
+    <label for="partTime">Part time</label>
+    <input type="checkbox" id="partTime" required [(ngModel)]="hospitaldoctor.partTime" name="partTime">
+  </div>
+  <div class="btn-group">
+    <button class="btn btn-primary" (click)="goBack()">Back</button>
+    <button type="submit" class="btn btn-success" [disabled]="!hdForm.valid">Submit</button>
+  </div>
+</form>
+

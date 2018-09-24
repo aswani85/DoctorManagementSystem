@@ -1,0 +1,7 @@
+@import url('https://fonts.googleapis.com/css?family=Archivo+Narrow:600');
+div {
+  display: flex;
+  flex-direction: column;
+  font-family: 'Archivo Narrow', sans-serif;
+  justify-content: center;
+}

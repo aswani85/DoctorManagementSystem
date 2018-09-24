@@ -1,0 +1,62 @@
+
+
+   <h2>Add new doctor to database</h2>
+    <form (ngSubmit)="onSubmit(rForm.value)">
+      <div [formGroup]="rForm" class="form-group">
+        <label for="name">Name</label>
+        <input type="text" class="form-control" id="name" required [(ngModel)]="doctor.name" name="name" formControlName="name">
+        <small *ngIf="!rForm.controls['name'].valid && rForm.controls['name'].touched">Name is required</small>
+      </div>
+      <div [formGroup]="rForm" class="form-group">
+        <label for="surname">Surname</label>
+        <input type="text" class="form-control" id="surname" required [(ngModel)]="doctor.surname" name="surname" formControlName="surname">
+        <small *ngIf="!rForm.controls['surname'].valid && rForm.controls['surname'].touched">Surname is required</small>
+      </div>
+      <div class="form-group">
+        <label for="title">Title</label>
+        <input type="text" class="form-control" id="title" [(ngModel)]="doctor.title" name="title">
+      </div>
+      <div  [formGroup]="rForm" class="form-group">
+        <label for="licenseNumber">License Number</label>
+        <input type="text" onkeypress='return event.charCode >=47 && event.charCode <= 57'  class="form-control" id="licenseNumber"  required [(ngModel)]="doctor.licenseNumber" name="licenseNumber" formControlName="licenseNumber" value="0" >
+        <small *ngIf="!rForm.controls['licenseNumber'].valid && rForm.controls['licenseNumber'].touched">License Number is required</small>
+      </div>
+      <div [formGroup]="rForm" class="form-group">
+        <label for="phone">Phone Number</label>
+        <input type="text" onkeypress='return event.charCode >=48 && event.charCode <= 57 || event.charCode == 45' class="form-control"
+          id="phone" required [(ngModel)]="doctor.phone" name="phone" formControlName="phone">
+          <small *ngIf="!rForm.controls['phone'].valid && rForm.controls['phone'].touched">Phone Number is required</small>
+      </div>
+      <div class="form-group"  [formGroup]="rForm">
+        <label for="email">Email</label>
+        <input type="email" class="form-control" id="email" required [(ngModel)]="doctor.email"
+          name="email" formControlName="email">
+          <small *ngIf="!rForm.controls['email'].valid && rForm.controls['email'].touched">Incorrect email format</small>
+
+      </div>
+      <div [formGroup]="rForm" class="form-group">
+        <label for="nationality">Nationality</label>
+        <input type="text" class="form-control" id="nationality"
+        required [(ngModel)]="doctor.nationality" name="nationality" formControlName="nationality">
+        <small *ngIf="!rForm.controls['nationality'].valid && rForm.controls['nationality'].touched">Nationality is required</small>
+      </div>
+      <div class="form-group">
+          <label for="speciality">Speciality</label>
+          <input type="text" class="form-control" id="nationality" required [(ngModel)]="doctor.speciality" name="speciality">
+        </div>
+      <div class="form-group">
+        <label for="dateOfBirth">Date of birth</label>
+        <input type="date" class="form-control" id="dateOfBirth"
+        required [(ngModel)]="doctor.dateOfBirth" name="dateOfBirth">
+      </div>
+      <div>
+        <label for="ateacher">Teacher</label>
+        <input type="checkbox" id="ateacher" required [(ngModel)]="doctor.ateacher" name="ateacher">
+      </div>
+
+      <div class="btn-group" >
+          <button class="btn btn-primary" (click)="goBack()">Back</button>
+          <button type="submit" [disabled]="!rForm.valid"  class="btn btn-success">Submit</button>
+        </div>
+      </form>
+
